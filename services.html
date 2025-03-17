@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <ul class="nav">
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="about.html" >ABOUT</a></li>
+            <li><a href="services.html"class="active">SERVICES</a></li>
+            <li><a href="contacts.html">CONTACTS</a></li>
+        </ul>
+    </nav>
+    <section class="services-section">
+        <div class="service-item">
+            <img src="bag2.png" alt="Service 1">
+        </div>
+    
+        <div class="service-item">
+            <img src="bag1.png" alt="Service 2">
+        </div>
+    
+        <div class="service-item">
+            <img src="bag3.png" alt="Service 3">
+        </div>
+    
+        <div class="service-item">
+            <img src="bag4.png" alt="Service 4">
+        </div>
+    
+        <div class="service-item">
+            <img src="bag5.png" alt="Service 5">
+        </div>
+    
+        <div class="service-item">
+            <img src="bag6.png" alt="Service 6">
+        </div>
+    </section>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const serviceItems = document.querySelectorAll(".service-item");
+            const popup = document.createElement("div");
+            popup.classList.add("popup");
+            popup.innerHTML = `
+                <p>Add this item to your cart or favorites?</p>
+                <div class="popup-buttons">
+                    <button class="add-to-cart">Add to Cart</button>
+                    <button class="add-to-favorites">Add to Favorites</button>
+                </div>
+            `;
+            document.body.appendChild(popup);
+            
+            const overlayBg = document.createElement("div");
+            overlayBg.classList.add("overlay-bg");
+            document.body.appendChild(overlayBg);
+            
+            serviceItems.forEach(item => {
+                item.addEventListener("click", function() {
+                    popup.style.display = "block";
+                    overlayBg.style.display = "block";
+    
+                    const cartBtn = popup.querySelector(".add-to-cart");
+                    const favBtn = popup.querySelector(".add-to-favorites");
+                    
+                    cartBtn.onclick = function() {
+                        cartBtn.textContent = "Added to Cart";
+                        cartBtn.classList.add("added");
+                    };
+                    
+                    favBtn.onclick = function() {
+                        favBtn.textContent = "Added to Favorites";
+                        favBtn.classList.add("added");
+                    };
+                });
+            });
+    
+            overlayBg.addEventListener("click", function() {
+                popup.style.display = "none";
+                overlayBg.style.display = "none";
+            });
+        });
+    </script>
+    
+    
+
+</body>
+</html>

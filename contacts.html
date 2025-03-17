@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <ul class="nav">
+            <li><a href="home.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contacts.html"class="active">Contacts</a></li>
+        </ul>
+    </nav>
+    <section class="contacts-section">
+        <div class="contact-form">
+            <h2>Contact Us</h2>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
+            <button id="submitBtn">Submit</button>
+            <p id="thankYouMessage" style="display: none; color: black;">Thank you for sending us a message!</p>
+        </div>
+
+        <div class="contact-info">
+            <h3>BagInfinity</h3>
+            <p>Email: contact@baginfinity.com</p>
+            <p>Phone: +123 456 7890</p>
+            <p>Address: 123 Bag Street, Fashion City</p>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById("submitBtn").addEventListener("click", function(event) {
+            let nameField = document.getElementById("name");
+            let emailField = document.getElementById("email");
+            let messageField = document.getElementById("message");
+            let thankYouMessage = document.getElementById("thankYouMessage");
+
+            let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
+
+            if (!emailPattern.test(emailField.value)) {
+                alert("Please enter a valid email address.");
+                return;
+            }
+
+
+            thankYouMessage.style.display = "block";
+
+            nameField.value = "";
+            emailField.value = "";
+            messageField.value = "";
+
+            setTimeout(() => {
+                thankYouMessage.style.display = "none";
+            }, 3000);
+        });
+    </script>
+
+</body>
+</html>
